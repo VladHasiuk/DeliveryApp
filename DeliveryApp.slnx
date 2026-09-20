@@ -1,8 +1,0 @@
-<Solution>
-  <Folder Name="/Models/">
-    <File Path="Courier.cs" />
-    <File Path="Parcel.cs" />
-    <File Path="ParcelStatus.cs" />
-  </Folder>
-  <Project Path="ConsoleApp1/ConsoleApp1.csproj" />
-</Solution>
