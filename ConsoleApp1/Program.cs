@@ -4,6 +4,7 @@ Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 Console.WriteLine("=== ЛАБОРАТОРНА РОБОТА №2: ІНКАПСУЛЯЦІЯ ТА КЕРУВАННЯ СТАНОМ ===\n");
 
+
 try
 {
     Courier courier = new Courier("Олександр Коваленко");
@@ -13,13 +14,13 @@ try
     Console.WriteLine($"Посилка №{parcel.Number} | Вага: {parcel.Weight} кг | Отримувач: {parcel.Recipient}");
     Console.WriteLine($"Початковий статус: {parcel.Status}\n");
 
-   
+ 
     Console.WriteLine("--- Зміна станів посилки ---");
     parcel.ChangeStatus(ParcelStatus.Accepted);
     parcel.ChangeStatus(ParcelStatus.InTransit);
     parcel.ChangeStatus(ParcelStatus.Delivered);
 
-
+   
     parcel.ChangeStatus(ParcelStatus.InTransit);
 }
 catch (Exception ex)

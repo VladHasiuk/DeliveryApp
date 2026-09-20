@@ -45,7 +45,7 @@ public class Parcel
         }
     }
 
-    // Доступ до читання відкритий, але змінити напряму заборонено (private set)
+ 
     public ParcelStatus Status { get; private set; }
 
     public Parcel(string number, double weight, string recipient)
@@ -53,13 +53,13 @@ public class Parcel
         Number = number;
         Weight = weight;
         Recipient = recipient;
-        Status = ParcelStatus.Created; // Початковий стан при створенні
+        Status = ParcelStatus.Created;
     }
 
-    // Метод для контрольованої зміни стану
+   
     public void ChangeStatus(ParcelStatus newStatus)
     {
-        // Приклад правил логіки переходу між станами
+      
         if (Status == ParcelStatus.Delivered)
         {
             Console.WriteLine($"[Помилка] Посилку №{Number} вже доставлено! Зміна стану неможлива.");
