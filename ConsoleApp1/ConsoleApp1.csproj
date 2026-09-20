@@ -7,9 +7,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <!-- Файлы модели теперь находятся внутри проекта в папке Models, SDK подключит их автоматически -->
+
   <ItemGroup>
-    <Compile Include="..\Courier.cs" />
-    <Compile Include="..\Parcel.cs" />
+    <Compile Include="..\Models\Courier.cs" />
+    <Compile Include="..\Models\Parcel.cs" />
     <Compile Include="..\ParcelStatus.cs" />
   </ItemGroup>
 
