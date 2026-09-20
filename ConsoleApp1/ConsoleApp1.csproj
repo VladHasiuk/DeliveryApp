@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="..\Courier.cs" />
+    <Compile Include="..\Parcel.cs" />
+    <Compile Include="..\ParcelStatus.cs" />
+  </ItemGroup>
+
 </Project>

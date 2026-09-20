@@ -1,54 +1,53 @@
-﻿using System;
+﻿using DeliveryApp.Models;
 using System.Diagnostics.Metrics;
-using DeliveryApp.Models;
 
+Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-Courier courier1 = new()
+Console.WriteLine("=== ЛАБОРАТОРНА РОБОТА №2: ІНКАПСУЛЯЦІЯ ТА КЕРУВАННЯ СТАНОМ ===\n");
+
+try
 {
-    Name = "Олександр Коваленко"
-};
+    Courier courier = new Courier("Олександр Коваленко");
+    Parcel parcel = new Parcel("NP20260001", 2.5, "Іван Петренко");
 
-Courier courier2 = new()
+    Console.WriteLine($"Кур'єр: {courier.Name}");
+    Console.WriteLine($"Посилка №{parcel.Number} | Вага: {parcel.Weight} кг | Отримувач: {parcel.Recipient}");
+    Console.WriteLine($"Початковий статус: {parcel.Status}\n");
+
+   
+    Console.WriteLine("--- Зміна станів посилки ---");
+    parcel.ChangeStatus(ParcelStatus.Accepted);
+    parcel.ChangeStatus(ParcelStatus.InTransit);
+    parcel.ChangeStatus(ParcelStatus.Delivered);
+
+
+    parcel.ChangeStatus(ParcelStatus.InTransit);
+}
+catch (Exception ex)
 {
-    Name = "Марiя Бондаренко"
-};
+    Console.WriteLine($"Виникла помилка: {ex.Message}");
+}
 
-// Створення об'єктів класу Parcel (Посилки)
-Parcel parcel1 = new()
+Console.WriteLine("\n--- Перевірка валідації (некоректні дані) ---");
+
+
+try
 {
-    Number = "NP20260001",
-    Weight = 2.5,
-    Recipient = "Iван Петренко"
-};
-
-Parcel parcel2 = new()
+    Console.WriteLine("Спроба створити посилку з вагою -1.5 кг:");
+    Parcel invalidParcel = new Parcel("NP20260002", -1.5, "Олена Сидоренко");
+}
+catch (Exception ex)
 {
-    Number = "NP20260002",
-    Weight = 0.8,
-    Recipient = "Олена Сидоренко"
-};
+    Console.WriteLine($"[Перехоплено виняток]: {ex.Message}");
+}
 
-Console.WriteLine("=== Служба доставки: Облiк посилок та кур'єрiв ===\n");
 
-Console.WriteLine("Кур'єри:");
-Console.WriteLine($"1. {courier1.Name}");
-Console.WriteLine($"2. {courier2.Name}");
-
-Console.WriteLine("\nПосилки:");
-Console.WriteLine($"1. № {parcel1.Number} | Вага: {parcel1.Weight} кг | Отримувач: {parcel1.Recipient}");
-Console.WriteLine($"2. № {parcel2.Number} | Вага: {parcel2.Weight} кг | Отримувач: {parcel2.Recipient}");
-
-namespace DeliveryApp.Models
+try
 {
-    public class Courier
-    {
-        public string Name { get; set; } = string.Empty;
-    }
-
-    public class Parcel
-    {
-        public string Number { get; set; } = string.Empty;
-        public double Weight { get; set; }
-        public string Recipient { get; set; } = string.Empty;
-    }
+    Console.WriteLine("\nСпроба створити кур'єра з порожнім ім'ям:");
+    Courier invalidCourier = new Courier("   ");
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"[Перехоплено виняток]: {ex.Message}");
 }
